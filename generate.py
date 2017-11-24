@@ -58,6 +58,7 @@ def get_slugs():
             links = parse_link_value(headers['link'])
             # this gives us a response like
             # {'https://api.github.com/organizations/8778805/repos?page=2' : {'rel' : 'next'}}
+            url = None
             for key, value in links.iteritems():
                 # if there is a next page this is the url we need
                 if value['rel'] == 'next':
@@ -66,9 +67,6 @@ def get_slugs():
                 # if we are at the before-last set of results, there is no `next` page, but a `last` page:
                 if value['rel'] == 'last':
                     url = key
-                    break
-            else:
-                url = None
         else:
             url = None
 
