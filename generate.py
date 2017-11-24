@@ -73,8 +73,8 @@ def get_slugs():
     # Sort the repositories (for now, alphabetically by repository name)
     repos.sort(key=lambda x: x['name'])
 
-    # filter the repositories so we only have those starting with `govt-theses-16-`
-    slugs = [r['name'] for r in repos if r['name'].startswith('govt-theses-16-')]
+    # filter the repositories so we only have those starting with `go-theses-18-`
+    slugs = [r['name'] for r in repos if r['name'].startswith('go-theses-18-')]
     return slugs
 
 def scrape_info(slugs):
@@ -84,6 +84,8 @@ def scrape_info(slugs):
     theses = []
     for slug in slugs:
         url = 'http://kabk.github.io/%s/' % slug
+        """
+        We will enable this bit after the metadata course
         print "parsing %s:" % url
         try:
             g = opengraph.OpenGraph(url=url, scrape=True)
@@ -95,6 +97,10 @@ def scrape_info(slugs):
         for key in ['image', 'title', 'creator', 'description']:
             if key not in d:
                 d[key] = ""
+        """
+        d = {}
+        d['slug'] = slug
+        d['url'] = url
         theses.append(d)
 
     return theses
@@ -102,12 +108,7 @@ def scrape_info(slugs):
 def write_html(theses):
     thesis_template = """
 <div class="preview">
-    <figure>
-        <a href="{url}"><img src="{image}"/></a>
-    </figure>
-    <h2><a href="{url}">{title}</a></h2>
-    <h3>{creator}</h3>
-    <p>{description} <a href="{url}">Continue reading…</a></p>
+    <h2><a href="{url}">{slug}</a></h2>
 </div>
 """
     
@@ -136,4 +137,3 @@ def write_html(theses):
 
 if __name__ == "__main__":
     write_html(scrape_info(get_slugs()))
-    # print scrape_info(["govt-theses-16-caroline-langendoen"])
