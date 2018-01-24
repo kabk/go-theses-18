@@ -1,154 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>GOVT Theses 2016</title>
-        <!-- This is so we get Thèses instead of ThÃ¨ses -->
-        <meta charset="utf-8"/>
-        <!-- This tells the mobile browser: do not zoom out -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    </head>
-    <body>
-        <header>
-            <h1>KABK Graphic Design Thèses</h1>
-            <select>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018" selected="true">2018</option>
-            </select>
-        </header>
-        <article>
-            <section id="theses">
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-Hilde-Barwegen/">go-theses-18-Hilde-Barwegen</a></h2>
+<!--
+	NOTES:
+	1. All tokens are represented by '$' sign in the template.
+	2. You can write your code only wherever mentioned.
+	3. All occurrences of existing tokens will be replaced by their appropriate values.
+	4. Blank lines will be removed automatically.
+	5. Remove unnecessary comments before creating your template.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>index</title>
+<!-- write your code here -->
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="index.js"></script>
+<script>
+
+
+
+
+
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("58430D653A3B48DAA9ECC5704794E70D");
+	var lib=comp.getLibrary();
+	handleComplete({},comp);
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	exportRoot = new lib.index();
+	stage = new lib.Stage(canvas);
+	stage.addChild(exportRoot);
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	//Code to support hidpi screens and responsive scaling.
+	function makeResponsive(isResp, respDim, isScale, scaleType) {
+		var lastW, lastH, lastS=1;
+		window.addEventListener('resize', resizeCanvas);
+		resizeCanvas();
+		function resizeCanvas() {
+			var w = lib.properties.width, h = lib.properties.height;
+			var iw = window.innerWidth, ih=window.innerHeight;
+			var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;
+			if(isResp) {
+				if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {
+					sRatio = lastS;
+				}
+				else if(!isScale) {
+					if(iw<w || ih<h)
+						sRatio = Math.min(xRatio, yRatio);
+				}
+				else if(scaleType==1) {
+					sRatio = Math.min(xRatio, yRatio);
+				}
+				else if(scaleType==2) {
+					sRatio = Math.max(xRatio, yRatio);
+				}
+			}
+			canvas.width = w*pRatio*sRatio;
+			canvas.height = h*pRatio*sRatio;
+			canvas.style.width = dom_overlay_container.style.width = anim_container.style.width =  w*sRatio+'px';
+			canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h*sRatio+'px';
+			stage.scaleX = pRatio*sRatio;
+			stage.scaleY = pRatio*sRatio;
+			lastW = iw; lastH = ih; lastS = sRatio;
+		}
+	}
+	makeResponsive(true,'both',true,1);
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+
+
+$(window).on('load', function(){
+     $('.loader').fadeOut();
+});
+
+
+</script>
+<!-- write your code here -->
+</head>
+<body onload="init();" style="margin:0px;">
+
+<div id="maintitle">
+  <p id="title">GRAPHIC DESIGN BA THESES</p>
+</div>
+<div id="navbar">
+  <div id="kabk">
+  <p class="nav">  ROYAL ACADEMY OF ART, THE HAGUE, NL, 2018 </p>
+  </div>
+
+  <div id="index">
+    <p class="nav">INDEX</p>
+  </div>
+
+  <div id="colophon">
+    <p class="nav">COLOPHON</p>
+  </div>
 </div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-andre-evers-trauma-kunst-design-de-mogelijkheden/">go-theses-18-andre-evers-trauma-kunst-design-de-mogelijkheden</a></h2>
+<div id="infopanel">
+  <p id="info_x">x</p>
+  <p class="col">Dear Reader,<br> please drag the circles around to explore the posters. Double click to read the abstract. Enjoy!</p>
 </div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-andreas/">go-theses-18-andreas</a></h2>
+<div id="indexcontent">
+<p id="index_x" >x</p>
+<a href="https://kabk.github.io/go-theses-18-nora-bekes-reclaiming-wanderlust/" target="_blank"><p class="namestitles">NÓRA BÉKÉS → Reclaiming Wanderlust</p></a>
+<a href="https://kabk.github.io/go-theses-18-paul-bille-i-think-we-can-do-better-than-that/" target="_blank"><p class="namestitles">PAUL BILLE → Answer to the Ultimate Question of Life, the Universe, and Everything</p></a>
+<a href="https://kabk.github.io/go-theses-18-thijmen-van-brunschot-misleading-maps/" target="_blank"><p class="namestitles">THIJMEN VAN BRUNSCHOT → Vooringenomen Cartographie</p></a>
+<a href="https://kabk.github.io/go-theses-18-carmen-dusmet-if-its-not-alive/" target="_blank"><p class="namestitles">CARMEN DUSMET CARRASCO → If It’s Not Alive, Then What Is It?</p></a>
+<a href="https://kabk.github.io/go-theses-18-rudi-van-delden-the-millenium-bug/" target="_blank"><p class="namestitles">RUDI VAN DELDEN → The True Millennium Bug</p></a>
+<a href="https://kabk.github.io/go-theses-18-niels-van-der-donk/" target="_blank"><p class="namestitles">NIELS VAN DER DONK → How To Sculpt A Crowd</p></a>
+<a href="http://thesis.lukasengelhardt.net" target="_blank"><p class="namestitles">LUKAS ENGELHARDT → PS:Magic 001</p></a>
+<a href="https://kabk.github.io/go-theses-18-andre-evers-trauma-kunst-design-de-mogelijkheden/" target="_blank"><p class="namestitles">ANDRÉ EVERS → Trauma Design Kunst: De Mogelijkheden</p></a>
+<a href="https://kabk.github.io/go-theses-18-eliza-glukhova/" target="_blank"><p class="namestitles">ELIZAVETA GLUKHOVA → Inenarrable Scenario</p></a>
+<a href="https://kabk.github.io/go-theses-18-michiel-heemskerk-le-jardin-d-amour/" target="_blank"><p class="namestitles">MICHIEL HEEMSKERK → Jardin D’amour</p></a>
+<a href="https://kabk.github.io/go-theses-18-daniel-hernandez/" target="_blank"><p class="namestitles">DANIEL HERNÁNDEZ CHACÓN → Please Be Patient, I’m still learning</p></a>
+<a href="https://kabk.github.io/go-theses-18-saber-javanmard-gain-loss/" target="_blank"><p class="namestitles">SABER JAVANMARD → Gain can be loss, loss can be gain</p></a>
+<a href="https://kabk.github.io/go-theses-18-ies-ditsen/" target="_blank"><p class="namestitles">IES DE JONG → Een Sisyfus Arbeid</p></a>
+<a href="https://kabk.github.io/go-theses-18-daan-jesper-kars-anarchism-agendas-pin-buttons/" target="_blank"><p class="namestitles">DAAN KARS → Anarchism, Agendas & Pin Buttons</p></a>
+<a href="https://kabk.github.io/go-theses-18-dora-kerekes/" target="_blank"><p class="namestitles">DÓRA KEREKES → The Divine, The Human, and the Law of Entropy</p></a>
+<a href="https://kabk.github.io/go-theses-18-rik-laging-contemporary-second-commandment/" target="_blank"><p class="namestitles">RIK LAGING → 4K Rituals & The Children of Heaven</p></a>
+<a href="" target="_blank"><p class="namestitles">IRIS LAM Bloemkoelen en Gemene Buiken</p></a>
+<a href="https://kabk.github.io/go-theses-18-jungeun-lee-is-it-good-for-nothing/" target="_blank"><p class="namestitles">JUNGEUN LEE → Is It Good For Nothing?</p></a>
+<a href="https://kabk.github.io/go-theses-18-anna-lenczewska-transcending-territories/" target="_blank"><p class="namestitles">ANNA LENCZEWSKA → Transcending Territories</p></a>
+<a href="https://kabk.github.io/go-theses-18-zuzanna-loch/" target="_blank"><p class="namestitles">ZUZANNA LOCH → A Particular Rush of Blood to the Brain.</p></a>
+<a href="https://kabk.github.io/go-theses-18-andreas/" target="_blank"><p class="namestitles">ANDREAS VAN DER MAST → Donatella Versace Is A Stage Designer</p></a>
+<a href=" https://kabk.github.io/go-theses-18-kay-cross-modal-design/" target="_blank"><p class="namestitles">KAY PISAROWITZ → Cross Modal Design</p></a>
+<a href="https://kabk.github.io/go-theses-18-taya-reshetnik-cathedral-of-a-new-era/" target="_blank"><p class="namestitles">TAISIIA RESHETNIK → Cathedral of a New Era: Graphic Designer as an Architect</p></a>
+<a href="https://kabk.github.io/go-theses-18-rui/" target="_blank"><p class="namestitles">REBECCA RUI → This is a project, not a product</p></a>
+<a href="https://kabk.github.io/go-theses-18-gaias-triad-josephine/" target="_blank"><p class="namestitles">JOSEPHINE VAN SCHENDEL → Gaia’s Triad</p></a>
+<a href="https://kabk.github.io/go-theses-18-joop-schroen/" target="_blank"><p class="namestitles">JOOP SCHROËN → De Grafisch Ontwerper als Architect</p></a>
+<a href="https://kabk.github.io/go-theses-18-marika-seo-One-day-I-will-find-the-right-words-and-they-will-be-simple./" target="_blank"><p class="namestitles">MARIKA SEO → One day I will find the right words, and they will be simple</p></a>
+<a href="https://kabk.github.io/go-theses-18-asya-sukhorukova-manipulative-canvas/" target="_blank"><p class="namestitles">ALEXANDRA SUKHORUKOVA → Manipulative Canvas</p></a>
+<a href="https://kabk.github.io/go-theses-18-lin-ven/" target="_blank"><p class="namestitles">LIN VEN → Great Concept… Now What?</p></a>
+<a href="https://kabk.github.io/go-theses-18-natalia-vishnevskaia/" target="_blank"><p class="namestitles">NATALIA VISHNEVSKAIA → Omega Point</p></a>
 </div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-anna-lenczewska-transcending-territories/">go-theses-18-anna-lenczewska-transcending-territories</a></h2>
+<div id="colophoncontent">
+<p id="col_x">x</p>
+<p class="col">  Thesis supervisors:</p><br>
+
+<p class="col">Merel Boers</p>
+<p class="col">Nick Axel</p>
+<p class="col">Dirk Vis</p><br>
+
+<p class="col">Code and design mentors:</p><br>
+
+<p class="col">Matthias Kreuzer</p>
+<p class="col">Eric Schrijver</p><br>
+
+<p class="col">Landing page design:</p><br>
+
+<p class="col">Natalia Vishnevskaia</p>
+<p class="col">Nora Bekes</p><br>
+
+<p class="col">Typeface: Archivo</p>
 </div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-asya-sukhorukova-manipulative-canvas/">go-theses-18-asya-sukhorukova-manipulative-canvas</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-carmen-dusmet-if-its-not-alive/">go-theses-18-carmen-dusmet-if-its-not-alive</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-daan-jesper-kars-anarchism-agendas-pin-buttons/">go-theses-18-daan-jesper-kars-anarchism-agendas-pin-buttons</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-daniel-hernandez/">go-theses-18-daniel-hernandez</a></h2>
-</div>
+<div class="loader"></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-dora-kerekes-title/">go-theses-18-dora-kerekes-title</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-eliza-glukhova/">go-theses-18-eliza-glukhova</a></h2>
-</div>
+<div id="abstract">
+  <p><a href="https://kabk.github.io/go-theses-18-nora-bekes-reclaiming-wanderlust/" target="_blank"><span class="ttl">Nóra Békés<br>Reclaiming Wanderlust</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-gaias-triad-josephine/">go-theses-18-gaias-triad-josephine</a></h2>
-</div>
+You are about to read of a research that arouse from a fascination for medieval visual communication, especially in manuscripts. Handwritten books were produced between the 5th and the 15th centuries AD  on various topics and for diverse audiences. Many of them attract immediate attention because of their lavish illustrations and artistic execution, others draw the reader with wit, humour or subtle visual sophistication. Even though these documents testify for a high skill in communicating messages efficiently, the Middle Ages is hardly ever discussed by contemporary graphic designers.
+<br><br>
+Through my exploration I was aiming to find out, what kind of visual strategies were used in medieval manuscripts to communicate knowledge; what is the role of the specific elements in building narratives. As a second goal I wanted to find out how historical research can be useful in the present-day design practice, and enrich the work both conceptually and visually.
+<br><br>
+In this thesis I take the Reader - you - on a guided tour into a self-curated collection of medieval manuscripts. Our research method will be visual analysis. We will first look at details, then complete pages and lastly a complete book. Exposed to our eager gaze, the images start revealing their secrets. Further theoretical and historical context will help us to understand them in depth.
+<br><br>
+We will find out, that formal solutions - for example initials or decorated borders - are not mere decoration, but there is a strong functional and conceptual reason for their presence. We will discover that the makers of medieval manuscripts were true “user experience designers”, and that their well-thought visual solutions aimed to make the content approachable for the audience; often several types of audiences. We will experience manuscripts as highly interactive, layered forms of visual communication, that can serve as a reference for current designers. Finally, we will see that the method of visual analysis supported by theoretical background information is a powerful tool to understand the deeper, conceptual layers behind historical sources. The knowledge gained this way reveals itself as approachable material for today’s makers to work with.</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-ies-ditsen/">go-theses-18-ies-ditsen</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-jan-egbers/">go-theses-18-jan-egbers</a></h2>
-</div>
+<div id="abstract2">
+  <p><a href="https://kabk.github.io/go-theses-18-paul-bille-i-think-we-can-do-better-than-that/" target="_blank"><span class="ttl">Paul Bille <br>Answer to the Ultimate Question of Life, the Universe, and Everything</span></a><br><br>
+In the broadest sense, I was looking into the consequences of constant and proliferating growth. I mean growth on a economical and a personal level and how these different mindsets of producer and consumer influence each other. I am interested in how this search for orientation in a society where everything is shifting, puts us in constant need to decide, as consumers and as producers.
+<br><br>
+I am interested in this topic because I can’t escape it. It is omnipresent in everybody's life and shapes our society tremendously. The aspects of perfectionism which tie into this shape our expectations towards reality everyday. Everything stays questioned at any moment. Everyday life becomes a distortion of itself, either an utopian or an apocalyptic one.
+<br><br>
+As me being “The Future” my view on this topic is the one of Youth. The fear of arbitrariness is an impression which happens to be a part of being young. In times where acceleration keeps changing, everything you learn is already old. We stay young and school never ends. Awareness about not being in the position of an grown up is beneficial while trying to grasp this big subject.
+<br><br>
+Therefore focussing on specific parts of this subject is helpful too. Let’s say, a juice press and the moment where introducing sophisticated technology into products like this fails, how the branding of such feeds our anxieties and how the whole party shuts down once it is exposed as obsolete. Various other examples of such are at hand. And in my thesis I looked at two or three specific mindsets which potentially help in avoiding/provoking similar accidents.
+<br><br>
+Because, we human beings are always more our accidents than our accomplishments. In order to embrace this accidentallness it is necessary to know that it does not expose us as arbitrary bystanders but as a significant part of the equation. And as long as ever more past is not getting carried into the future there is an increasing need for a thorough observation of what we usually do before taking a “final position”.</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-joop-schroen/">go-theses-18-joop-schroen</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-jungeun-lee-is-it-good-for-nothing/">go-theses-18-jungeun-lee-is-it-good-for-nothing</a></h2>
-</div>
+<div id="abstract3">
+  <p><a href="https://kabk.github.io/go-theses-18-thijmen-van-brunschot-misleading-maps/" target="_blank"><span class="ttl">Thijmen van Brunschot <br>Vooringenomen Cartographie</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-kay-cross-modal-design/">go-theses-18-kay-cross-modal-design</a></h2>
-</div>
+Deze scriptie gaat over vooringenomen cartografie en de gevolgen die deze heeft. Ik heb dit onderwerp onderzocht omdat ik dacht dat cartografen keuzes maken die de interpretatie van kaarten beïnvloeden. Daarnaast dacht ik dat deze keuzes nadelige gevolgen hadden en dat wij, juist als grafisch ontwerpers, moeten nadenken over zulke keuzes en de gevolgen. In dit onderzoek is gezocht naar antwoorden op de vragen: ‘Welke grafische keuzes maken cartografen (bewust of onbewust)?’, ‘Wat voor nadelige effecten kunnen deze keuzes hebben?’ en ‘Kunnen cartografen daar iets tegen doen?’. Om deze onderzoeksvragen te beantwoorden is literatuuronderzoek en empirisch onderzoek gedaan naar verschillende aardrijkskundige kaarten.<br><br>
+Mijn beginstandpunten ten aanzien van de onderzoeksvragen waren ten eerste dat (ontwerp)keuzes van cartografen de interpretatie van lezers (nadelig) kunnen beïnvloeden. Ten tweede moeten cartografen lezers informeren over hun standpunten en de keuzes die zij maken met betrekking tot de productie van kaarten. Dit omdat de lezer zich niet standaard bewust is van die nadelige invloed. Als derde moeten cartografen zich tijdens het productieproces bewust zijn van de invloed die hun keuzes mogelijk uitoefenen. Als laatste dacht ik dat juist grafisch ontwerpers moeten nadenken over zulke keuzes en de gevolgen die ze uitoefenen.<br><br>
+Na dit onderzoek zijn mijn vier standpunten versterkt. Cartografen en kaartenmakers staan voor tal van keuzes die direct en indirect effect hebben op de interpretatie van kaarten. Ik had van tevoren niet verwacht dat er meer empirisch onderzoek gedaan zou zijn naar dit onderwerp. Dit onderzoek geeft aan dat de interpretatie van kaarten eenvoudig te beïnvloeden is. Dit betekent niet dat er geen kaarten meer gemaakt of gebruikt zullen worden. Cartografen moeten kaarten blijven maken en lezers moeten kaarten blijven lezen. Om onbewuste en verkeerde van de interpretatie van kaarten tegen te gaan, moeten cartografen en kaartenmakers hun standpunten expliciet maken en kritiek leveren om bewust te worden en kennis te vormen. Kijk ook als lezers kritisch naar cartografische informatie (auteur, bronvermelding en grafische elementen) en wees er bewust van dat kaarten soms niet objectief zijn.</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-lin-ven/">go-theses-18-lin-ven</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-lukas-engelhardt/">go-theses-18-lukas-engelhardt</a></h2>
-</div>
+<div id="abstract4"><p>
+  <a href="https://kabk.github.io/go-theses-18-carmen-dusmet-if-its-not-alive/" target="_blank"><span class="ttl">Carmen Dusmet Carrasco<br> If It’s Not Alive, Then What Is It?</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-marika-seo-One-day-I-will-find-the-right-words-and-they-will-be-simple./">go-theses-18-marika-seo-One-day-I-will-find-the-right-words-and-they-will-be-simple.</a></h2>
-</div>
+Design as a practice is changing. It no longer requires a client to exist. We are encountering design not only at a practical level—serving the purpose of third parties, but we are starting to feel the autonomy of the discipline. It’s acquiring a life of its own. Emerging realities, formed through a design process, are hard to define; Is it art? Is it graphic design? We can sense our tools, software and hardware. We provide virtual and physical surfaces. We have a choice on defining this life.
+<br><br>
+As a living entity, design confronts the designer with freedom but also responsibilities. I feel there is an urge to discuss design’s life. In times where design is becoming automated, software and interfaces also make it possible for anyone to call themselves a designer. Software and algorithms are not all that’s needed for the magic to happen. The designer as a content-generator, the effects of this content and the fact that this content is alive when activated and understood by an audience is what gives design a soul.
+<br><br>
+Seeing design as something that is becoming autonomous, as something with a soul, allows us to observe the constellation of the maker, the object, and the perceiver. The relevance in this relationship is crucial for contemporary graphic designers to reveal the power of design, its ability to influence social imagination and its ability to generate alternative frames in which reality can be understood. We are not only answering questions and solving problems. We are actively asking questions, and inventing entities that provide spaces for new conversations to occur.
+<br><br>
+So, how exactly does something apparently inanimate—a concept—begin to be understood through the lens of life? A lens of motion, autonomy, self-regulation and independency. It might be relevant to first question what life is and how we understand it.</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-michiel-heemskerk-le-jardin-d-amour/">go-theses-18-michiel-heemskerk-le-jardin-d-amour</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-natalia-vishnevskaia/">go-theses-18-natalia-vishnevskaia</a></h2>
-</div>
+<div id="abstract5"><p>
+<a href="https://kabk.github.io/go-theses-18-rudi-van-delden-the-millenium-bug/" target="_blank"><span class="ttl">Rudi van Delden  <br>The True Millennium Bug</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-niels-van-der-donk/">go-theses-18-niels-van-der-donk</a></h2>
-</div>
+Research question:<br>
+How do the interface designs of apps and games and the restricted form of mobility they offer affect dream worlds?
+<br><br>
+Hypothesis:<br>
+My preliminary position on this question is that the millennial’s demand for control over and customization of his reality with his usage of mediating interfaces will eventually lead to the replacement of dreams with artificial dreams. I envision a science fictional future in which the millennial’s infinite desire for true individual autonomy eventually pushes him into cyclical time.
+ <br><br>
+Starting points:<br>
+My starting point was the marginalization of sleep. I was fascinated by the workings of dreams and how people are desperately attempting to get back ‘the missing third’ of their lives by optimizing their sleep. I researched how the accustomization of millennials’ to mediating interfaces has made efficiency, comfort and control into their sovereign goods.
+ <br><br>
+Research method:<br>
+First I researched how the development of technology in the 90s 00s has influenced the millennial’s coming of age. After that I researched how his adaption to mediating interfaces has resulted in an endless desire for control and how virtual affective capitalism meets this desire. I use games as an example to explore the similarities between virtual realities and dreaming with their most important overlapping properties being, adaption of interface thinking and bodiless perception. While researching the techniques that sleep app developers are currently using for mining theirs users sleep data, the image arose that there is an emerging interest in the colonization of sleep. This potential colonization stirred me to envision a future wherein dreams are replaced by a virtual equivalent, with the full discard of the body and the unconsciousness every zone of relevance will be eliminated and eventually lead the millennial to slip into cyclical time in whose every recurring cycles things appear and disappear.
+<br><br>
+Results so far:<br>
+The starting point of my research was The Millennium Bug; the first and last moment I experienced a collective distrust and fear of technology. I discovered that the advancements in virtual affective capitalism would eventually lead the millennial into cyclical time. The original Millennium Bug turned out to be a trivial bug causing involuntary time travel on a very small scale, the true Millennium Bug turns out to be the millennial’s endless pursuit of virtual happiness and disenchantment that will eventually eat his dreams.</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-nora-bekes-reclaiming-wanderlust/">go-theses-18-nora-bekes-reclaiming-wanderlust</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-paul-bille-i-think-we-can-do-better-than-that/">go-theses-18-paul-bille-i-think-we-can-do-better-than-that</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-rik-laging-contemporary-second-commandment/">go-theses-18-rik-laging-contemporary-second-commandment</a></h2>
-</div>
+<div id="abstract6">
+  <p><a href="https://kabk.github.io/go-theses-18-niels-van-der-donk/" target="_blank"><span class="ttl">Niels van der Donk<br>How To Sculpt A Crowd</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-rudi-van-delden-the-millenium-bug/">go-theses-18-rudi-van-delden-the-millenium-bug</a></h2>
-</div>
+Research question:<br>
+How can the approach and tactics of mass political and internet culture movements be used to create new politically engaged graphic design principles?
+<br><br>
+Hypothesis:<br>
+Looking at the outcome of Trump’s election, we can definitely see that memes and internet culture have had a high influence on the political views of entire nations. I believe that our current common identity is shaped by these memes. At school, graphic design students are being taught to apply certain communication principles to engage with a certain group of people, and communicate your specific political view towards them. We can now see that these principles don’t withstand against the easy, DIY style, propaganda and meme creation from Conservatives. If I’m able to give us a better understanding on how these memes work, I believe we can definitely use certain aspects from political memes to create more influential, political work.
+<br><br>
+Starting point:<br>
+I can see the believe of many fellow students in creating truly, world changing, work is heavily declining. Great political work is being made but the results are not there.
+<br><br>
+Research method:<br>
+There are many books about the influence of internet culture on society, propoganda, communication with media and memes. Outside of books I also research a lot in internet based news outlets like blogs, Youtube channels that deal with this specific subject. Browsing the sources of where the whole meme culture comes from also has a high importance for me. On top of that, I would like to see what 4chan thinks about my views by starting threads on there and similar forums.
+</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-rui/">go-theses-18-rui</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-saber-javanmard-gain-loss/">go-theses-18-saber-javanmard-gain-loss</a></h2>
-</div>
+<div id="abstract7">
+  <p><a href="http://thesis.lukasengelhardt.net" target="_blank"><span class="ttl">Lukas Engelhardt<br>PS:Magic 001</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-taya-reshetnik-cathedral-of-a-new-era/">go-theses-18-taya-reshetnik-cathedral-of-a-new-era</a></h2>
-</div>
+The term magic is very elusive. A lot of people might first think of dragons, dwarves and elves. Others might think of crystals, reiki, and tarot cards. Real, or imaginary, magic seems to be about knowledge and control over the true workings of the world, its hidden powers, and one’s position in it. Etymologically, magic comes from Old Persian and might have described someone able, in possession of power.
+<br><br>
+Magic has been invested with positive and negative connotations alike through the centuries. Under Christianity, it meant anything to do with paganism or witchcraft and suspected practitioners were burned at the stake. Occult societies, on the other hand, saw magic as the way to spiritual enlightenment. Scholars argue about whether magic and religion can even be treated as different things, and due to its ambiguity the term magic has rarely been used in academic papers since the 1990s.
+<br><br>
+Colloquially, however, magic is everywhere. And it's ungraspable, not just as a term. Stage magic for example relies completely on the deception of the audience. Magic is something that cannot be explained—whether it’s because one cannot explain it (lack of understanding) or because it actually cannot be explained (supernatural). Magic is something that just works. In this way, magic is quite similar to, for example, technology or the economy—the things we believe in today, instead of magic.
+<br><br>
+Ultimately, magic is a belief system (or several) and these beliefs have been communicated and upheld through different media. Letters could be shaped into amulets, rituals are held in digital environments. Both images and (hyper)text have even been invested with magical qualities themselves. In these cases image making and magic coincide, and the image maker becomes a magician.
+<br><br>
+Magic images can be be black boxes or white boxes, and image makers can be black-hat or white-hat magicians. I’m trying find out what makes these images magical and what this magical perspective means for the practice of graphic design. In my thesis I discuss in three parts how magic is connected to literacy, how magic is mediated through images, and, ultimately, how image makers can be magicians.
+<br><br>
+I’m wondering: what is the role of the designer in a world full of magic and can he use magic to create his own world?
+</p></div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-test-how-it-works-today/">go-theses-18-test-how-it-works-today</a></h2>
-</div>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-thijmen-van-brunschot-misleading-maps/">go-theses-18-thijmen-van-brunschot-misleading-maps</a></h2>
-</div>
+<div id="abstract8"><p>
+  <a href="https://kabk.github.io/go-theses-18-andre-evers-trauma-kunst-design-de-mogelijkheden/" target="_blank"><span class="ttl">André Evers Trauma <br>Design Kunst: De Mogelijkheden</span></a><br><br>
 
-<div class="preview">
-    <h2><a href="http://kabk.github.io/go-theses-18-zuzanna-loch/">go-theses-18-zuzanna-loch</a></h2>
-</div>
-</section>
-        </article>
-    </body>
+  In de wereld waarin wij leven kunnen mensen getraumatiseerd raken. In grote lijnen kan men een onderscheid maken tussen fysieke trauma’s en psychische trauma’s. Over het algemeen kun je van beide soorten trauma’s zeggen dat het een verstoring is van de bestaande situatie.<br><br>
+  Het kunnen grote en kleine verstoringen zijn. Verstoringen met een grote impact of een kleine impact op de rest van een mensenleven. De gevolgen van een trauma kunnen kortlopend en langdurig zijn. Sommige verstoringen zijn duidelijk aanwezig, maar verstoringen kunnen ook verborgen zijn. Hoe gaat een mens om met dergelijke verstoringen en de daarbij behorende gevolgen in zijn eigen leven of verstoringen die plaats vinden in het leven van een naaste.<br>
+  Hoe gaan we om met verstoringen die een heel volk, een hele generatie of de hele wereld aangaan. Hoe geven we vorm aan de gevolgen van deze verstoringen. Welke mogelijkheden bieden beeldende en toegepaste kunst ten aanzien van een trauma en de daaruit voortvloeiende gevolgen?<br><br>
+  Tijdens het onderzoeken en het beantwoorden van deze hoofdvraag heb ik geprobeerd om in een fijnmazige beschrijving de juiste toon te vinden om de verschillende verschijningsvormen van de separate kwetsbare begrippen trauma, beeldende kunst en toegepaste kunst aan elkaar te verbinden aan de hand van praktijkgerelateerde voorbeelden. Maar alvorens ik in deze thesis antwoord probeer te geven op deze hoofdvraag denk ik dat het goed is om de combinatie trauma, beeldende en toegepaste kunst in te leiden door antwoord te geven op de volgende voor­bereidende vragen; Wat is een trauma? Waar komt het woord trauma vandaan?<br>
+  Welke relatie hebben trauma, toegepaste en beeldende kunst met elkaar in het verleden?<br>
+  Hoe verhouden toegepaste en beeldende kunst zich tot elkaar?<br>
+  Tijdens mijn onderzoek ben ik erachter gekomen dat de begrippen trauma, toegepaste en beeldende kunst grote begrippen zijn. Deze drie begrippen als het centrum van mijn onderzoek raken grote actuele thema’s aan. Thema’s zoals superdiversiteit, slavernij, dood, incest, oorlog, terreur, migratie, seksualiteit, genocide en geloof. Thema’s die op zichzelf al een onderzoek waard zouden zijn. Gezien de beperking in tijd zal ik proberen om in deze thesis de grote lijnen weer te geven en mij te concentreren op de hoofdvraag en het inleiden van de hoofdvraag:<br>
+  Welke mogelijkheden bieden beeldende en toegepaste kunst ten aanzien van een trauma en de daaruit voortvloeiende gevolgen?</p></div>
+
+
+<div id="abstract9"><p>
+  <a href="https://kabk.github.io/go-theses-18-eliza-glukhova/" target="_blank"><span class="ttl">Elizaveta Glukhova <br>Inenarrable Scenario</span></a><br><br>
+  The temporal perception of existence is one of the most mysterious dimensions. We attempt to measure or arrange it applying comparative assessments, however we still struggle to say how do we experience time. Experience belongs to the present; to the exact moment of time where we encounter the world through our senses, nevertheless we don’t have a sense to encounter the time itself and for that reason we have to address it through other events, knowledge or pattern of our own thoughts. <br><br>
+  The concept of future always helped us to navigate through present, whether it was a routine decision of our breakfast menu or crucial choice. By thinking, planning and dreaming we bring future into present and the connection between those two creates almost a surreal puzzle. The present obviously influences future, but also what we think of the future defines our present. It seems if we crack the future before it arrives, we will know what is our present and therefore what the future will be.<br><br>
+  This labyrinth of thoughts would perfectly make sense if human had precise tools for future prediction, but unfortunately our abilities in this craft are rather poor. Nevertheless people always had a desire to foretell in order to direct or at least to be ready for upcoming. From time to time those attempts were even more or less accurate, but over all the general practice is unreliable and rather confusing and puzzling then supportive. Then how can we narrate our personal and collective future under the conditions of uncertainty and anxiety? And how to engineer our present in order to get the desirable future?<br><br>
+  Searching for the answer the thesis seeks to define what do we mean by future and how we experience present, as well as to look into several possible future scenarios. The plots are observed from different perspectives, such as science, mass culture and art. Those three disciplines help to create a broad overview of prophecies and find out the binding mechanisms between future and present.<br><br>
+  At the end of the day it doesn’t matter how many forecasts will fulfill themselves if we can’t take control over them. Then what’s left for us there? Should we trust the fate and follow our destiny or should we try to gain more control over the powers of nature? Is there a way how we can leave behind all our fears and anxiety and narrate inenarrable?</p></div>
+
+
+  <div id="abstract10"><p>
+<a href="https://kabk.github.io/go-theses-18-michiel-heemskerk-le-jardin-d-amour/" target="_blank"><span class="ttl">Michiel Heemskerk<br>Jardin D’amour</span></a><br><br>
+
+ The image of an ideal relationship is everywhere around us. It’s the standard that a lot of people seem to aspire to. I find it very comforting to watch this image, although I will never fit into it, I am watching from outside. In my research, I am looking into the elements that are used to construct the portrayal of an ideal relationship that implies an eternal state of bliss.<br><br>
+My research starts in the Jardin D’Amour. A fictional garden that seems like lovebird paradise, a garden of happiness. It’s the garden that during my research functions as the green public city space where I explore the constructed idealized symbolism we are so heavily exposed to. It navigates me towards a better understanding of this form of satisfaction caused by an image that seems unachievable for anyone. The Jardin D’Amour is the backdrop of different events that will lead me to an answer. Looking at history, the park has always been a place for the elite, an enclosed space, an idealized paradise. The garden is space where heteronormativity and the nuclear family are ruling by day, but at night the paradise reveals the not so ideal sides as well. The dark side of the garden questions whether that what is perceived in society as ideal, really is the thing that we want to aspire
+to. The park now functions as an escape from the social construct.<br><br>
+TV-shows and movies have played a huge role in glamourizing and styling the image of the perfect romance. I am using the world of the male homosexual as an example trying to enter this earthly paradise. The standard of a physical perfection that still remains the law of the gay male world and the world of camp have had a big influence on the constructed heteronormative ideal. I believe that these are elements that evoke the feeling of bliss that I adore so much. Is this why queers take such a big part in constructing this ideal image when it actually only excludes them from society?<br><br>
+My answer is that the ideal Romance, in the landscape of a paradise called the Jardin D’Amour, is huge theatre set, the backdrop is a garden and the props are vanilla cupcakes with Swarovski crystals. This huge team consists of people striving for happiness, the creation of this spectacle is the aim of happiness. The goal, the road to achieving this is already enough for society to enter a state of bliss. I do believe the queer world, which takes such an important role in creating heteronormative standards could reconsider this. The garden is interpretive and so is paradise on earth.
+</p></div>
+
+
+  <div id="abstract11"><p>
+    <a href="https://kabk.github.io/go-theses-18-daniel-hernandez/" target="_blank"><span class="ttl">Daniel Hernández Chacón<br>Please Be Patient, I’m still learning</span></a><br>
+
+Use cases and implications of machine learning technology in graphic design<br><br>
+
+As artificial intelligence rapidly expands towards new areas, it is essential for graphic designers to learn about this topic and understand its potential implications. It is still very unclear what these emerging technologies might be able to achieve in a creative field like graphic design, given that it is very difficult to emulate a form of human creativity that is able to transform, combine and explore a vast conceptual space, like graphic designers do. This thesis aims to envision what might be possible through machine learning in the future, and specifically through which methods this might be achieved.<br><br>
+Developing an artificial intelligence capable of autonomous design is a very difficult problem, because graphic design, and especially “good graphic design" is an intrinsically subjective and abstract concept which is very difficult to quantify and fully automate. This thesis aims to examine to what extent this kind of autonomous design is possible, how it might be achieved, and what this achievement would imply.<br><br>
+This research is mostly carried out through experimentation with several existing technologies like deep neural networks, generative adversarial networks and genetic algorithms, evaluating their capabilities as well as their limitations to perform the tasks of a graphic designer. The use of these technologies in the area of graphic design remains virtually unexplored, which is why a deeper understanding of their capabilities could point out how we could adapt to the major changes that are likely to occur to the discipline of graphic design in the near future.
+</p></div>
+
+
+
+  <div id="abstract12">
+    <p><a href="https://kabk.github.io/go-theses-18-saber-javanmard-gain-loss/" target="_blank"><span class="ttl">Saber Javanmard<br>Gain can be loss, loss can be gain</span></a><br><br>
+
+ In my thesis I will do research about the relationship between text and typography. Text in the traditional definition of graphic design is seen as an ingredient that the designer needs to deal with in a visual way. But what if the starting point is text and the meaning of text? Does it change the way a designer or a typographer works? Text is an important part in my work; my focus is on poetry, typography, and type design. It all deals with language and text. I'm from a country –Iran– in which literature and poetry is an important part of people’s life and therefore many artists and designers use it as a powerful tool. I'll explore my own cultural background within western graphic design, particularly typography and push myself to develop a clear profile. I hope the outcome of this thesis will help me to develop a system or structure that will direct and manage my design process, using the power of text. Text and meaning of the words as a starting point, experimenting with words and text relating to the content. In order to achieve clear and practical results, I will have a general and short review on the works of important text artists as a starting point and my focus will be based on theoretical and visual research about the significance of text in the works of two designers, one from East (Reza Abedini) and one western designer (David Carson) as examples and through their works I will study the historical gains and losses of content and meaning within the technological achievements and eventually implement the outcomes of the research in a practical way (analogue and digital) in my own work. As a conclusion, I hope I will find out clear or at least some practical solutions for the below questions:<br><br>
+How is the power of text used in the work of Reza Abedini and David Carson as a design tool, rather than a formal typographically polished element?<br>
+How do the two designers compare, since they use very diff erent languages, are the techniques nevertheless the same?<br>
+How do text and typography in design interact and how can they direct and influence each other?<br>
+
+  </p></div>
+
+
+  <div id="abstract13">
+    <p><a href="https://kabk.github.io/go-theses-18-ies-ditsen/" target="_blank"><span class="ttl">Ies de Jong<br>Een Sisyfus Arbeid</span></a><br><br>
+
+Deze scriptie gaat over de toekomst van arbeid voor mijn eigen generatie. Ik ben dit onderzoek gestart uit een fascinatie voor de doorsnee werkende mens, met huwelijk, modaal inkomen, hond en kinderen. Kortom: de perfecte volwassene, waar ik een voorbeeld aan hoor te nemen. Het idee van een opgelegde levensweg voedt mijn angst voor de toekomst, en in mijn ogen lijkt er geen sprake te zijn van een uitweg. <br><br>
+Mijn scriptie krijgt vorm door middel van een dialoog, die geïnspireerd is op het Socratische dialoog, de klassieke methode om een filosofisch gesprek op gang te brengen. Ik onderzoek de factoren die bijdragen aan de verandering van het werkveld, en ga in gesprek met mijn eigen generatie over de toekomst van arbeid en de verwachtingen die zij hebben na hun studie. Naar aanleiding van literatuuronderzoek, enquêtes, en interviews zoek ik een antwoord op de vraag of ik, en mijn huidige klasgenoten een sisyfusarbeid tegemoet gaan, of mijn angst wel legitiem is, en ik het fenomeen ‘werken’ niet een onterecht een stigma opleg.  <br><br>
+Met de opkomst van zelfstandigen zonder personeel, flex-werkplekken, kantooryoga en jonge werknemers die extreem hoge eisen aan zichzelf stellen verandert de norm. De generatie waartoe ik behoor, inclusief mijzelf, lijkt sterk te verlangen naar betekenis in geeft de voorkeur aan een flexibel bestaan, met meerdere werkgevers en werkplekken. Burn-outs, de bedreiging van werkende robots, en doorwerken tot je 70e levensjaar zijn geen uitzonderlijkheden meer.
+Het werkveld verandert, maar dit hoeft niet te betekenen dat dit enkel negatieve gevolgen heeft. De ideale levensweg, mocht die bestaan, vindt plaats in het theater is waar we het allen mee te doen hebben. Alle rekwisieten zijn aanwezig, maar het script is nog onbekend. Dit heeft niet alleen geleid tot de bewustwording van mijn eigen pessimisme, maar ook tot de uitkomst dat er geen manier is om dit te toetsen. Of mijn angst wel gegrond is blijft een mysterie, en uiteindelijk zal ik me moeten troosten met het besef dat niemand zeker zal weten hoe het voor ons uitpakt.
+</p></div>
+
+
+  <div id="abstract14"><p>
+    <a href="https://kabk.github.io/go-theses-18-daan-jesper-kars-anarchism-agendas-pin-buttons/" target="_blank"><span class="ttl">Daan Kars<br>Anarchism, Agendas & Pin Buttons</span></a><br>
+The road from dadaism to the punk-rock movement to contemporary provocative design projects<br><br>
+
+The aesthetics and agendas of 70’s and 80’s punk-rock movement were striking and provocative, not only nation wide but globally. Still nowadays the visual communication of the punk-rock movement is considered to be striking.
+What were the tactics and methods that made the face of punk-rock so provocative and are those tactics and methods still relevant in contemporary provocative and activist design projects?<br><br>
+Although the revolutionary and provocative aspect of contemporary design projects appear to be a development of the 21st century, its methods and techniques are actually an aftermath of the 70’s/80’s punk-rock movement.Nowadays, with many political events that include injustice and fascism happening all around the world, the numbers of movements (or members of already existing movements) are growing fast. Where are we standing as educated politically motivated designers in this matter, and how do we react on it? During my research about the punk-rock movement I noticed that a lot of techniques and tactics, that were used to distribute the anti-fascist ideologies, are being used in contemporary graphic design practices.<br><br>
+I use artworks that are provocative and try to strip it down to find out what elements it uses to be striking. Ones the elements are found I try to trace it back to find out where it comes from. After that I try to compare the elements with contemporary provocative design projects or artworks to see if the methods from then are still relevant today.I found out that most contemporary provocative projects use the same methods as the punk-rock movement of the 70’s/80’s. In addition I discovered that it goes back even further to the period when dadaism was established. Most iconic punk-rock objects are swallowed by consumerism and therefore lost their political load and are left for nothing more than just an aesthetic. However it is getting picked up again by contemporary designers and slowly it starts to get political meaning again.
+</p></div>
+
+
+  <div id="abstract15"><p>
+    <a href="https://kabk.github.io/go-theses-18-dora-kerekes/" target="_blank"><span class="ttl">Dóra Kerekes<br>The Divine, The Human, and the Law of Entropy</span></a><br><br>
+
+The myth of the flood is familiar to most literate Western people, and more. Coming from ancient Mesopotamia, making its way from the Sumerians to the Babylonians then to the Canaanites and the Israelites, the tale of Noah and his ark has not only spanned generations, it has also spanned civilisations, with only a few changes before ending up in the Bible, which hugely impacted the development of Western Culture. What is the modern cultural significance of such and accent story? How does the story of Noah still affect us today? Why does the motif of the flood recur so often? My goal examine the origins and the evolution of the flood tale, to conclude how it was perceived over time, and how its meaning have changed depending on time and space. By means of researching and comparing common biblical elements that usually come back in secular retellings, I hope to find out the weight of its impact.  More specifically, my hypothesis is that the great story of Noah and the flood has had such a determinative influence of how we perceived, shaped and retold disaster stories, that in some cases, we unconsciously reproduce it.
+</p></div>
+
+
+
+  <div id="abstract16">
+    <p><a href="https://kabk.github.io/go-theses-18-rik-laging-contemporary-second-commandment/" target="_blank"><span class="ttl">Rik Laging <br>4K Rituals & The Children of Heaven</span></a><br><br>
+
+ I am guilty of idolatry. I’ve violated the sacred Second Commandment. <br><br>
+“You shall not make for yourself a carved image, or any likeness of anything that is in heaven above, or that is in the earth beneath, or that is in the water under the earth. You shall not bow down to them or serve them, for I the LORD you God am a jealous God...”. <br><br>
+Yet I am not alone in this, many Christians have not been shy to depict the holy trinity since the coming of Christ. Whilst the second commandment has been taken very lightly in many cases it is not fully absent, it is still respected in various ways within the religious field. However, many contemporary depictions of the ‘divine’ have outgrown their restricted boundaries entirely and pledged themselves fully to the sin of idolatry. <br><br>
+Outgrown and evolved. Many young eyes have fixed their gaze on high definition digital screens, the more contemporary beacons of faith. Portals to the ‘likeness of anything that is in heaven above...’, worlds beyond our own, not just to look at, but to immerse oneself in. Video games and their ‘magical claiming’ power have created their own forms of contemporary religion accompanied with new rituals and sacred vows. This new idolatry worshiping by younger generations paves a path that helps guide the young and lost in their real, and often complex and chaotic existence.
+
+  </p></div>
+
+
+  <div id="abstract17">
+    <p><span class="ttl">Iris Lam <br>Bloemkoelen en Gemene Buiken</span></p></div>
+
+
+  <div id="abstract18"><p><a href="https://kabk.github.io/go-theses-18-jungeun-lee-is-it-good-for-nothing/" target="_blank"><span class="ttl">
+    Jungeun Lee    <br>Is It Good For Nothing?</span></a><br><br>
+All living creatures cannot turn back time. As it is destined for a human to be born, grow up and eventually die, so is an object. It is invented and distributed to people; it enjoys its golden age and at a certain point of time, it disappears into the backdrop of history like a human being.<br><br>
+A book–the main subject of this paper–is one of the objects that has spent a long time together with humanity. Also, the amount of time it has existed within the boundary of the human society gives us a unique attachment to it. Even though it was a rather different intention compared to other people in the beginning, I intimately connected myself with books since I was young. My interest in reading books was one of the main reasons why I would like to be a graphic designer. Unfortunately, from the time I began my studying graphic design, many people started to predict the death of the book and the death of the printed matter.<br><br>
+Is the book really dying? Alternatively, are we just becoming so blind that we cannot see the original value of the book due to the new medium like an e-book? Shall we accept the fact that we are missing the value of the book? Should we resist the book from losing its value? Does this resistance come from a vague fear of the new medium without our sufficient understanding and knowledge? <br><br>
+In this paper, numerous pieces of literature were used to explore the past, present, and future of the book, leading to a question of its value and emotion toward all humankind. Throughout the research, the book is treated as a human-like object. The book, which had a such an eventful life, has been killed or even massacred because of political reasons or obsession of individuals; sometimes the book spends its heyday and is loved by people. Moreover, the book even laughs at people who predicted its future a little earlier. In fact, it is still doubtful whether which one is going to be the final survivor from a duel to the death between a paper book and an e-book. In the strict sense of the word, is this a worthy fight?<br><br>
+We all know that the death itself is never wrong to humans as well as to books. What is more important than death is to think about what books did during their life and what people can do for them after their death. If we condemned death only for its heading us to our eternal disappearance, we would realize nothing and would not learn a lesson. Therefore, as the first step, we should think about a core question: what other values of the book shall we find in this paper? The solution to the question will lead us to answer the fundamental message of this paper: Is the book good for nothing?
+
+</p></div>
+
+
+  <div id="abstract19"><p>
+    <a href="https://kabk.github.io/go-theses-18-anna-lenczewska-transcending-territories/" target="_blank"><span class="ttl">Anna Lenczewska     <br>Transcending Territories</span></a><br><br>
+
+The subject of my research is about how traveling and new environmental circumstances such as social, economical and political sphere can be influential on artist creativity nowadays and how we can change while transcending territories. Medieval artists have been already traveling to receive an art education from Italian or French masters. I see that nowadays artists became a modern nomads, who travel for exact the same reason or to exchange experience in working field with someone else. In my written piece I detect old and new examples of artists being influenced by environment and by analysing different angles of that influences I look for symbols that represent them.<br><br>
+
+I would like to discern importance of travels, by changing territory. I wonder how ability to adjustment goes together with art. How people who by mixing into new places receive inspirational input . I’m interested in how cultural backgrounds are shaped. In sphere of politics, economy and society.<br><br>
+
+By observation from my own experiences while traveling from Poland to the Nederlands, Portugal, and South Africa. I considered received knowledge about polish school of posters, and analysed compared real facts and artists stories.
+I supported myself with an idea about people artistic varieties after I’ve red ‘Migrant Journal’ by Migrant Journal(?) and ‘The Politics of Design’ by Ruben Pater.
+
+</p></div>
+
+
+  <div id="abstract20"><p>
+    <a href="https://kabk.github.io/go-theses-18-zuzanna-loch/" target="_blank"><span class="ttl">Zuzanna Loch    <br>A Particular Rush of Blood to the Brain.</span></a><br><br>
+Warning: Some might think that the content of this thesis is not safe for work. Maybe. I wonder why that is the case. <br><br>
+The topic I’m exploring is the conceptual and visual identity that our culture has assigned to sex. Throughout centuries it has shaped the outcomes for what sex is, how to understand it, and what problems we shall connect with it. I find it interesting how particular branches of the whole phenomenon has since then been controversial. What if they weren’t?<br><br>
+My hypothesis is that the way the sex is being understood is a result of different political, religious and cultural influences from the history, not necessarily nature itself. Sexuality is part of the very intimate and personal areas of human psychology, yet we reach for ready made answers from culture to help us understand it and shape it to meet certain models, while the picture we get from media is quite distorted. I wonder how else that picture would look if it was shaped by different events in the history? <br><br>
+I would like to explore how sex is being presented and defined in other areas of the world, other times, parallel universes. What effort is being made to manipulate the image of it? Further on I want to speculate on how it could be presented if we dismissed certain culturally rooted tropes. I’m planning to read and watch academic materials about sexuality and gender psychology and analyse the visual quality and representation in media, and eventually come up with alternative scenarios.
+</p></div>
+
+
+
+  <div id="abstract21"><p>
+    <a href="https://kabk.github.io/go-theses-18-andreas/" target="_blank"><span class="ttl">Andreas van der Mast    <br>Donatella Versace Is A Stage Designer</span></a><br><br>
+
+Als klein kind presenteerde ik mezelf ouder, op de manier hoe ik kleding droeg. [Andreas.jpg] Van jongs af aan was ik al geïnspireerd door modeshows en vormde ik al een bepaalde aantrekkingskracht tot kleding. De muziek, de mensen, eigenlijk de gehele atmosfeer. <br><br>
+Vorig jaar herfst was ik zelfs ooggetuige van de modeshow Jacquemus, tijdens de Paris Fashion Week. Het was zo groot en indrukwekkend dat ik zelfs de tintelingen ervan kreeg.<br><br>
+Kleding vind ik erg inspirerend omdat de manier hoe je naar kleding kijkt  jouw smaak hierdoor wordt getoond. Kleding is ook wel het uniform die jou cultuur weergeeft en waar je mee verbonden bent. Daarnaast laat kleding zien hoe jij je voelt en wat jou interesseert in het leven.
+
+  </p></div>
+
+
+  <div id="abstract22">
+    <p><a href=" https://kabk.github.io/go-theses-18-kay-cross-modal-design/" target="_blank"><span class="ttl">Kay Pisarowitz    <br>Cross Modal Design</span></a><br>
+Seeing what we hear, hearing what we see<br><br>
+
+My main goal of writing this text is to find out how vision can possibly make room for other senses. We live in a visually oriented culture. Especially for the people—including myself—who pursue the job of a designer. For us people, whose practice consists of almost only visual purposes, it is crucial we question the importance of that particular sense organ we use the most. Are our eyes a necessity or just an advantage? Can I still be a designer when I become blind? <br><br>
+Graphic design is usually described as visual communication. However, in our daily lives, we use vision in combination with hearing in order to interact with one another. Therefore I will focus mainly on vision and hearing. This profession puts a lot of visual conditions on top of our already existing pictorial obsession. Seeing is part of a collective unconsciousness we all share. The eye is at the top of our sensory hierarchy. What has caused this hierarchical shift and when did this happen? Is the notion of visual domination true or is it merely an assumption? <br><br>
+In this text I will explore different techniques and tools to circumvent the way we use our senses. What happens when one of our sense organs stops functioning and what are the right substitutions for it. Can limiting our focus on vision make us see better?</p></div>
+
+
+  <div id="abstract23"><p>
+    <a href="https://kabk.github.io/go-theses-18-taya-reshetnik-cathedral-of-a-new-era/" target="_blank"><span class="ttl">Taisiia Reshetnik    <br>Cathedral of a New Era: Graphic Designer as an Architect</span></a><br><br>
+
+The subject of my research is the influence of electronic media on physical space. Societies have always been shaped more by the nature of the media by which men communicate rather then by the content of the communication. Moreover electronic media has a direct physical impact on the way our brain is functioning. The way we think and perceive information is being changed. And my thesis is focusing on how these changes are influencing architecture and urban landscape in particular.<br><br>
+I would like to discern the role of graphic design in architecture and to point out the spheres where it is playing a key role. Graphic design is commonly being considered as a 2-dimensional practice, resulting in print or a digital product. However I see a strong connection in how its influence spreading further, on a larger scale of architecture and urban planning. For example, screens become a part of the architecture of the public space, and the content of the visuals influence the dynamics and social behaviour within these spaces. At the train stations and shopping malls the message coming from these screens is predominantly commercial and serve as a distraction and stimulator for consumerism. If graphic designers together with architects would create the content of these screens themselves and use it in the benefit of navigation and in favour of overall atmosphere, the station or a shopping mall could look entirely different–not only the content of the screen would change, but the use of it, and assumably the way the building is organised in the first place.
+The architecture of Utrecht Central, as well as many other public spaces, has distinct features of mallification (a process of turning into a mall) and a so-called ‘junkspace’. These tendencies do not just happen, and among the consumer-orientated design with planned obsolescence, new media and graphic design are shaping these tendencies as well.
+My central assumption within this thesis is that media is forming the perception and ways of thinking which leads to changes in how we approach urban planning and architecture. And since graphic design is responsible for communication and translation of information into a visual message, it stands behind that influence as well. I want to point out that the influence of graphic design goes out of the 2D canvas and has a wider, tangible affect.<br><br>
+Observation and personal experience of travelling through Utrecht Central during my internship for the period of 3 months became the starting point of this research.When talking about my experience I found out that I am not the only one concerned with overwhelming mallification and standartisation of public spaces. Amongst all I figured that there has always been concern that new media is going to damage society in some way. However, protesting against the progress never worked out. As a result societies would inevitably change, and these changes could be seen in every aspect of social and personal life.<br><br>
+First of all, I am looking at the development of communication methods and how it influenced society in the past. I use examples of how invention of alphabet, writing and print influenced communication and social behaviour and compare it to the situation happening nowadays. Graphic designers play a big role in the sphere of communication and distribution of information, and translating it to the audience, architects as well. Graphic design has the power of shaping the way how the media is going to influence our mins and how eventually the world around us is going to look and function.
+<br><br>
+Media shapes perception.<br>
+Perception influences physical space.<br>
+Is graphic designer an architect?
+
+</p></div>
+
+
+  <div id="abstract24"><p>
+    <a href="https://kabk.github.io/go-theses-18-rui/" target="_blank"><span class="ttl">Rebecca Rui   <br>This is a project, not a product</span></a><br><br>
+
+This text seeks to investigate the relationship between technology and humans in the process of the becoming of the individual. Central questions are: what are the conditions that form this process; how does design form our relationship with technology; how can technology be designed so that it facilitates the process of the becoming of the individual?<br><br>
+
+Divided into three parts, wherein PART ONE outlines two theories: Gilbert Simondon’s concept of "individuation" and Matthew Crawford’s argument on the necessary conditions for the becoming of the individual. For Simondon the individual is a continual process, and for Crawford this process is dependent on acquiring skills and gaining competence. The way in which we do so is through and with technology, and so it follows that in order to gain competence and skill, the relationship between technology and humans needs to be a collaborative and reciprocal one. PART TWO makes an analysis of the dominant designs of technology and makes the case that it is applied through a consumer ethic, placing the designer/creator at one end, and the consumer at the other. In so doing we become tools of technology, rather than establishing a reciprocal relation, thereby obstructing the process of the becoming of the individual. Drawing upon the two theories, PART THREE outlines designs of technology and methodologies which facilitate the process of the becoming of the individual, aiming at a deeper and more integrated relationship between humans and technology. The methodologies discussed in PART THREE are Speculative Art and Design which offer a space to be able to imagine and co-create possible futures and in that process reflect on what we are doing. The ethos of hacking and open design is discussed, where hacking is the practice of re-purposing existing designs of systems or objects in ways more precisely tailored to the users needs. It is an approach which facilitates the ingenuity to expand the potential of what has been created, by enabling the end user to be part of the process, and not only on the receiving end of it. Open Design, which is essentially about the concept of sharing, means that the user can take what is given, make alterations according to their needs, transform it and redistribute it to others. In this way it offers various entry points to technological engagement through which theoretical understanding can emerge. Lastly, a series of workshops that entail technological engagement and function to transform technologies as political practices are discussed.
+
+</p></div>
+
+
+  <div id="abstract25"><p>
+    <a href="https://kabk.github.io/go-theses-18-gaias-triad-josephine/" target="_blank"><span class="ttl">Josephine van Schendel<br> Gaia’s Triad</span></a><br>
+
+An Allegory of the New Wild, Primal Being & Cold Hardware<br><br>
+
+This allegory unravels as a mythological dialogue between three children, offspring of mother Gaia who are worried about Gaia’s well-being. The son and daughters are the Silk Gardener, the Pigmented Cavewoman and the Crystal Dusted Witch. Mother Gaia falls into oblivion, after describing to her kin how humans possess an everlasting tendency to seek connection with nature, but that she nevertheless feels Mankind grew wary of its relationship with her. She puts her hope into her children, for they are made out of her root and earth, yet also out of mankind’s flesh and blood. <br><br> 
+The three then attempt to bring their mother out of her vegetable state, by proposing three different outlooks upon the relationship of humans with nature. The physical, the mental and the virtual: The Silk Gardener is proposing an unfamiliar urban laboratory green, hoping to find with this a new wild in all our cities. While the Pigmented Cavewoman is resolved into finding strength in mankind’s primal energy, to be accessed through primal cave paintings. Yet the Crystal Dusted Witch foresees a more virtual appearance of nature, and proposes the biologization of technology to sidestep the toxic uncanniness of technology as flourishing nature.<br><br>
+These visions will be illustrated by means of visual material, being the systematization of nature in natural history museums, the primitive graceful figures of the Gwion Gwion paintings in Australia and the slimy textures of artificial living organisms, depicted in David Cronenberg’s movie Existenz.  <br><br>
+At long last, while the tendency of humans to seek connections with nature gets described in the introduction, after the pleas of the progeny, the story takes a different turn. The relation of mankind with mother Gaia gets questioned by the Monstrous Mother herself. A line gets drawn with the ancient myth Medea, a powerful mother who gets betrayed by her husband (Mankind), and decides as an ultimate revenge to kill their children. The big things always win.
+
+
+</p></div>
+
+
+
+  <div id="abstract26"><p>
+    <a href="https://kabk.github.io/go-theses-18-joop-schroen/" target="_blank"><span class="ttl">Joop Schroën   <br>De Grafisch Ontwerper als Architect</span></a><br><br>
+
+De plek waar ik me op dit moment bevind. Openbare Bibliotheek Spui plein, Den Haag. De plek die ik opzoek als ik concentratie in mezelf wil afdwingen. De plek met een absurde prijs voor een kopje koffie waarvan iedereen bereid is die te betalen. Het is het enige anti kater medicijn dat verkrijgbaar is, en dan ook door meer dan de helft van studenten hier wordt genuttigd om hun kostbare studie tijd een extra ‘boost’ te geven. Je zult misschien denken dat de stilte, de historische rol van de bibliotheek en het feit dat ik omringd ben door boeken mijn concentratie versterken, maar het zijn juist al deze verschillende mensen om me heen die gezamenlijk een sterk gevoel van concentratie en contemplatie uitstralen. Mensen met verschillende achtergronden en motivaties maar momenteel het zelfde doel voor ogen hebben. Af en toe gaat er een telefoon af, met het gevolg dat de eigenaar uit hun concentratie wordt getrokken en ingaat op het impuls om hun sociale media uitgebreid te checken, zonde. <br><br>
+
+Architectuur heeft de rol om locatie specifieke omgevingen te creëren die mensen bij elkaar brengt en aanzet tot specifieken handelingen. Helaas heb ik het gevoel dat grafisch ontwerp — het vak dat ik beoefen — en nieuwe media aan deze kracht zou kunnen bijdragen, maar in hun huidige staat hier juist aan afdoen. Ik wil een kritisch standpunt aannemen naar nieuwe media toe. Voornamelijk de snelheid en verwerpelijkheid waarbinnen het zich nu afspeelt, roept zorgen en vragen bij mij op. Wat betekent een locatie specifieke ervaring nog in een wereld die de vorm aanneemt van een constant veranderend netwerk? Hoe kan technologie en media totaalervaringen versterken in plaats van vernauwen? Belangrijk voor mij is hoe dit kan worden bereikt zonder simulatie in de vorm van ‘Virtual reality’ of het vormgeven van een pretentieuze hyperrealiteit? <br><br>
+
+In deze scriptie analyseer ik de veranderde definitie van het begrip ‘ruimte’, of misschien nog wel beter gezegd het synoniem ‘plek’. Het woord ‘ruimte’ heeft namelijk de associatie met een een fysieke plek die ruim (groot) is. Voor veel mensen is dit niet meer per definitie wat het begrip nog betekend. In het zogeheten post-internet tijdperk heeft nieuwe media de kans gekregen een virtuele architectuur te scheppen die versmolten is met onze hedendaagse samenleving. Een ruimte is banaal gezien een op bepaalde manier aangeduide omgeving met een specifiek doeleinden. Dit kan zowel traditioneel gezien een fysieke en tastbare plek zijn, zoals de bibliotheek met een duidelijke architectuur en locatie in de stad. Een ander voorbeeld is een Reddit subtreath (online forum). Waarvan gezegd kan worden dat dit tevens een nieuw soort ruimte met een duidelijk doeleinden is. Ook kan van deze ruimte gezegd worden dat het een duidelijke 'locatie' heeft in de vorm van een uniek webadres. Maar in hoeverre is deze locatie specifieke ervaring gelijkwaardig aan ervaring binnen de fysieke ruimte? Het dwalen door de straten is ingeruild voor uren intensief surfen binnen de krochten van het internet.
+  </p></div>
+
+
+  <div id="abstract27">
+    <p><a href="https://kabk.github.io/go-theses-18-marika-seo-One-day-I-will-find-the-right-words-and-they-will-be-simple./" target="_blank"><span class="ttl">Marika Seo  <br> One day I will find the right words, and they will be simple</span></a><br><br>
+
+The purpose of this text is to investigate words, their capabilities, and meaning, with an underlying plea for ambiguity in communication. Verbal quarrels take place everywhere, especially online, with the sender expecting their intention to be fully and precisely communicated to receivers. This seems like a specific demand for words which imagery or any other modes of expression do not face. <br><br>
+Being raised in different cultures where one communication emphasises indirectness and ambiguity (East), and the other precision and directness (West), my communication predominantly being the prior seemed to fail in the context of the latter. But couldn’t ambiguity and allowing space for interpretation possibly enhance communication? Looking into the mode of communication of Japanese copywriting, where commercialism meets poetry — the prior with a clear set of goals of communicating, while the latter evoking meaning in addition to the prosaic ostensible meaning — I attempt to call attention to what can happen when words are embraced as mediation, and allow the effect to hold equal importance to the intention. Translation of ambiguity was an additional challenge to translation of language, which I am yet to know whether it can have a definite success, but the process becomes the proof of how words construct the world that we see.</p></div>
+
+
+  <div id="abstract28"><p>
+    <a href="https://kabk.github.io/go-theses-18-asya-sukhorukova-manipulative-canvas/" target="_blank"><span class="ttl">Alexandra Sukhorukova  <br>  Manipulative Canvas</span></a><br><br>
+
+How do the known conventions of image-composition influence our perception of the surrounding reality? This writing is about the social power of a two-dimensional canvas. We live in the world, ruled by images. A man-made image is a language, that emerges within a specific culture. It always follows a certain structure and intention, and lacks the possibility of being entirely objective or autonomous. A graphic image is the way we put the tangible world in order, as well as give a shape to abstract ideas. I believe, that this language can and should be studied, taught and used thoughtfully.<br><br>
+In this thesis, my main objective is to take a step back, and look at what we already have and might be currently taking for granted. My main research focus is on some of the existing conventions of a graphic composition, that travel from image to image, and influence our perception of the surrounding reality. I speculate and provide examples of how basic graphic elements like line and circle become cultural weapons. But, as this theme is extremely wide in its aspects, I have to keep it sharp. To not get lost in the overwhelming historical research, I choose one subject to illustrate the general standpoint. I'm looking into the diverging graphic representations of time, as a clear example of how a drawing can form a shared philosophical attitude.<br><br>
+Apart from that, my writing is partly autobiographical. Images have always been a big part of my life, and everything I write I, first and foremost, project on myself. I try to analyze my own relationship with images, and look at my background in order to understand these dynamics and see what I can learn from it. <br><br>
+After-all, this thesis is not, yet, a plan of action, but a proposal to raise more strategic questions: What is the future of visual-literacy? <br>
+What is the duty of image-makers in the world filled with misinterpreted and undervalued images?
+
+
+</p></div>
+
+
+  <div id="abstract29"><p>
+  <a href="https://kabk.github.io/go-theses-18-lin-ven/" target="_blank">  <span class="ttl">Lin Ven<br>Great  Concept… Now What?</span></a><br><br>
+Nowadays, graphic design education places great emphasis on the conceptual and theoretical aspects of design. But no matter what, it almost never comes to a real design (strategy) positioned in our reality.<br><br>
+I have the desire to implement my designs in the real world and see if my ideas actually work. Therefore I researched the way graphic design is applied in practice. <br><br>
+How can you generate a positive effect [ in the real world ] with your design skills?<br><br>
+To get a better insight I did literature research and interviewed experts. I analysed different (graphic design) projects and compared these case studies.<br><br>
+To have an impact, we should put our design ideas out there, in the real world, and see what happens.
+
+
+</p></div>
+
+
+  <div id="abstract30"><p>
+    <a href="https://kabk.github.io/go-theses-18-natalia-vishnevskaia/" target="_blank"><span class="ttl">Natalia Vishnevskaia <br>  Omega Point</span></a><br><br>
+
+    This paper is a collection of stories in the form of a diary, written from the perspective of the Observer. His perception of time is not linear; he has always lived and forever will. He is one and he is everyone. His aim is to dive into humans’ experiences, feel as they feel, separate into fragments, and come back together. The Observer longs to find a key to the human consciousness and discover the binding element between mind and body. Maneuvering between materialism and spirituality, he seeks to investigate how technology affects this complex harmony within each and every person. <br><br>
+
+    Prepare to embark upon an exploration of humanity, but be careful when you reach the last frontier — by reaching the end, you will close the circle.
+
+
+</p></div>
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1280px; height:720px">
+		<canvas id="canvas" width="1280" height="720" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1280px; height:720px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+
+  <script>
+  $("#indexcontent").hide();
+  $("#colophoncontent").hide();
+
+  $("#index").click(function(e) {
+    $("#indexcontent").show();
+  });
+
+  $("#colophon").click(function(e) {
+    $("#colophoncontent").show();
+  });
+
+  $("#index_x").click(function(e){
+    $("#indexcontent").hide();
+  });
+
+  $("#col_x").click(function(e){
+    $("#colophoncontent").hide();
+  });
+
+  $("#info_x").click(function(e){
+    $("#infopanel").hide();
+  });
+
+
+  </script>
+
+
+</body>
 </html>

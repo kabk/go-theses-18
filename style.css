@@ -1,0 +1,286 @@
+@font-face {
+    font-family: 'archivo_blackregular';
+    src: url('fonts/archivoblack-regular-webfont.woff2') format('woff2'),
+         url('fonts/archivoblack-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'archivomedium';
+    src: url('archivo-medium-webfont.woff2') format('woff2'),
+         url('archivo-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'archivomedium_italic';
+    src: url('archivo-mediumitalic-webfont.woff2') format('woff2'),
+         url('archivo-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#maintitle{
+ background-color:  white ;
+ background: white;
+ z-index: 1;
+ position: absolute;
+ height: 6vw;
+ width: 100vh;
+ top:100vh;
+ left:0vw;
+ transform: rotate(270deg);
+ transform-origin: 0 0 ;
+}
+
+#title{
+  font-family: 'archivo_blackregular', sans-serif;
+  font-weight: bold;
+  font-size: 5vh;
+  line-height: 0vw;
+  color: black;
+  width: 95vh;
+  top:0vh;
+  /*bottom: 10vh;*/
+  left:0vw;
+  float: right;
+  text-align: center;
+  /*text-orientation: sideways;
+  writing-mode:vertical-lr;*/
+  /*transform: rotate(270deg);
+  transform-origin: right bottom 0vh ;*/
+}
+
+#navbar {
+  background-color:  white ;
+  background: white;
+  position: absolute;
+  left:5.5vw;
+  top:0vh;
+  height: 6.5vh;
+  width: 100vw;
+  z-index: 2;
+}
+
+#kabk{
+  left:0;
+  position: absolute;
+  width:50vw;
+}
+
+#index{
+  left: 67vw;
+  position: absolute;
+}
+
+#colophon{
+  left:74vw;
+  position: absolute;
+}
+
+#index_x{
+  font-family: 'archivo_blackregular', sans-serif;
+  font-size: 1.4vw;
+  line-height: 1vw;
+  color: black;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+#col_x{
+  font-family: 'archivo_blackregular', sans-serif;
+  font-size: 1.4vw;
+  line-height: 1vw;
+  color: black;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+#info_x{
+  font-family: 'archivo_blackregular', sans-serif;
+  font-size: 1.4vw;
+  line-height: 1vw;
+  color: black;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+
+.nav{
+  font-family: 'archivo_blackregular', sans-serif;
+  font-size: 1.4vw;
+  line-height: 1vw;
+  color: black;
+}
+
+#indexcontent{
+  width:38vw;
+  height:80vh;
+  top: 6.5vh;
+  left: 38vw;
+  overflow: scroll;
+  background: white ;
+  position: absolute;
+  z-index: 1;
+  padding: 1vw;
+
+}
+
+#colophoncontent{
+  width: 15vw;
+  height: 80vh;
+  top:6.5vh;
+  left: 80vw;
+  position: absolute;
+  background: white;
+  z-index: 1;
+  padding: 1vw;
+}
+
+#infopanel{
+  width: 15vw;
+  height: 13vh;
+  left: 10vw;
+  top:75vh;
+  position:absolute;
+  background: yellow;
+  z-index: 1;
+  padding: 1vw;
+
+}
+
+
+.namestitles{
+  font-family: 'archivomedium', sans-serif;
+  font-size: 0.9vw;
+  line-height: 1.5vw;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: black;
+}
+
+.col{
+  font-family: 'archivomedium', sans-serif;
+  font-size: 0.9vw;
+  line-height: 1.5vw;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: black;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+}
+
+a:visited{
+  color: black;
+}
+
+.namestitles:hover{
+  color: white;
+  background-color: black;
+}
+
+
+html, body {
+  background: black;
+  overflow: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  }
+
+
+  #animation_container {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+
+  #abstract, #abstract2, #abstract3, #abstract4, #abstract5, #abstract6, #abstract7, #abstract8, #abstract9, #abstract10, #abstract11, #abstract12, #abstract13, #abstract14, #abstract15, #abstract16, #abstract17, #abstract18, #abstract19, #abstract20, #abstract21, #abstract22, #abstract23, #abstract24  {
+    position: absolute;
+    width:250px;
+    height:250px;
+    padding-left:35px;
+    padding-right:35px;
+    z-index: 1;
+    /*cursor: none;*/
+    overflow-y: scroll;
+    background: white;
+    margin: 0 auto;
+  }
+  #abstract25, #abstract26, #abstract27, #abstract28, #abstract29, #abstract30   {
+    position: absolute;
+    width:250px;
+    height:250px;
+    padding-left:35px;
+    padding-right:35px;
+    z-index: 1;
+    overflow-y: scroll;
+    background: white;
+    margin: 0 auto;
+  }
+
+
+  p{
+    color: black;
+    font-family: 'archivomedium', sans-serif;
+    font-size:0.5vw;
+        /*text-align: center;*/
+  }
+  .ttl{
+    font-family: 'archivo_blackregular', sans-serif;
+  }
+
+  #overlay{
+  position:fixed;
+  z-index:99999;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background:rgba(0,0,0,0.9);
+  transition: 1s 0.4s;
+}
+#progress{
+  height:1px;
+  background:#fff;
+  position:absolute;
+  width:0;
+  top:50%;
+}
+#progstat{
+  font-size:0.7em;
+  letter-spacing: 3px;
+  position:absolute;
+  top:50%;
+  margin-top:-40px;
+  width:100%;
+  text-align:center;
+  color:#fff;
+}
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('images/_preloader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
