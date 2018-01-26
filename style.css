@@ -214,33 +214,43 @@ body {
 
   #abstract, #abstract2, #abstract3, #abstract4, #abstract5, #abstract6, #abstract7, #abstract8, #abstract9, #abstract10, #abstract11, #abstract12, #abstract13, #abstract14, #abstract15, #abstract16, #abstract17, #abstract18, #abstract19, #abstract20, #abstract21, #abstract22, #abstract23, #abstract24  {
     position: absolute;
-    width:250px;
-    height:250px;
+    /*width:250px;
+    height:250px;*/
+    top:15vh;
     padding-left:35px;
     padding-right:35px;
+    left:50%;
+    margin-left: -20vw;
     z-index: 1;
+    width:40vw;
+    height:70vh;
     /*cursor: none;*/
     overflow-y: scroll;
     background: white;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
   }
   #abstract25, #abstract26, #abstract27, #abstract28, #abstract29, #abstract30   {
     position: absolute;
-    width:250px;
-    height:250px;
+    /*width:250px;
+    height:250px;*/
+    top:15vh;
     padding-left:35px;
     padding-right:35px;
+    left:50%;
+    margin-left: -20vw;
     z-index: 1;
+    width:40vw;
+    height:70vh;
+    /*cursor: none;*/
     overflow-y: scroll;
     background: white;
-    margin: 0 auto;
   }
 
 
   p{
     color: black;
     font-family: 'archivomedium', sans-serif;
-    font-size:0.5vw;
+    font-size:1.5vw;
         /*text-align: center;*/
   }
   .ttl{
