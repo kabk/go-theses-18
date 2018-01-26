@@ -227,12 +227,14 @@ body {
     /*cursor: none;*/
     overflow-y: scroll;
     background: white;
+        display: none;
     /*margin: 0 auto;*/
   }
   #abstract25, #abstract26, #abstract27, #abstract28, #abstract29, #abstract30   {
     position: absolute;
     /*width:250px;
     height:250px;*/
+    display: none;
     top:15vh;
     padding-left:35px;
     padding-right:35px;
