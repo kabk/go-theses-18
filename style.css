@@ -80,7 +80,8 @@
   position: absolute;
 }
 
-#index_x{
+
+#col_x, #info_x, #index_x, .abstract_x {
   font-family: 'archivo_blackregular', sans-serif;
   font-size: 1.4vw;
   line-height: 1vw;
@@ -91,26 +92,9 @@
   border: 0;
 }
 
-#col_x{
-  font-family: 'archivo_blackregular', sans-serif;
-  font-size: 1.4vw;
-  line-height: 1vw;
-  color: black;
-  text-align: right;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-#info_x{
-  font-family: 'archivo_blackregular', sans-serif;
-  font-size: 1.4vw;
-  line-height: 1vw;
-  color: black;
-  text-align: right;
-  padding: 0;
-  margin: 0;
-  border: 0;
+.abstract_x {
+  float: right;
+  padding-top:3%;
 }
 
 
@@ -196,6 +180,8 @@ a:visited{
 html, body {
   background: black;
   overflow: none;
+  font-size:1.3vw;
+  font-family: 'archivomedium', sans-serif;
 }
 
 body {
@@ -252,7 +238,7 @@ body {
   p{
     color: black;
     font-family: 'archivomedium', sans-serif;
-    font-size:1.5vw;
+    font-size:1.3vw;
         /*text-align: center;*/
   }
   .ttl{

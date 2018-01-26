@@ -154,7 +154,7 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 				image16 = new Image();
 				image16.src = "images/16_rik.jpg";
 				image17 = new Image();
-				image17.src = "4.jpg";
+				image17.src = "images/17_jan.jpg";
 				image18 = new Image();
 				image18.src = "images/18_jungeun.jpg";
 				image19 = new Image();
@@ -658,7 +658,6 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 				s12.y = 640;
 				s12.x = 1201;
 
-
 				bitmap13.mask = s13;
 				s13.y = 290;
 				s13.x = 495;
@@ -677,7 +676,7 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 
 				bitmap17.mask = s17;
 				s17.y = 483;
-				s17.x = 385;
+				s17.x = 435;
 
 				bitmap18.mask = s18;
 				s18.y = 420;
